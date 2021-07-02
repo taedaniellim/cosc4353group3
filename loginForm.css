@@ -1,0 +1,45 @@
+h1 {
+    text-align: center;
+}
+
+form {
+    padding-left: 42%;
+    padding-top: 1%;
+}
+
+input {
+    font-weight: bold;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 2px;
+    width: 200px;
+}
+
+    #dob {
+        width: 200px;
+    }
+
+    #submit {
+        width: 214px;
+        font-size: large;
+        background-color: black;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    #submit:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        border-color:black;
+    }
+
+    #login_details {
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold
+    }
+
+span {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
