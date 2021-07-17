@@ -17,4 +17,4 @@ db = firebase.database()
 auth = firebase.auth()
 #storage = firebase.storage()
 
-email = input("enter your ")
+email = input("enter your ") 
