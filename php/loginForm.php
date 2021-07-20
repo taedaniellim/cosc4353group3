@@ -20,7 +20,7 @@
         <input type="password" name="password" id="password" placeholder="Enter Password" required></input><br><br>
 
         <input type="submit" name="submit" id="submit" value="LOGIN"></input><br><br>
-        <span>New Here?<br>Get yourself registered <a href="registrationForm.html">Here</a></span>
+        <span>New Here?<br>Get yourself registered <a href="clientRegistration.php">Here</a></span>
 
    </form><br><br>
    
