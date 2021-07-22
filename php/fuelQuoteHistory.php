@@ -13,12 +13,10 @@
   <link rel="stylesheet" href="../css/fuelQuoteHistory.css">
 </head>
 <body bgcolor={{color}}>
-
   <h1 class="text-center">Fuel Quote History </h1>
   <hr size="3">
   <div class="container">
       <div class="w-75 mx-auto">
-
         <form class="form-group centered" action="register" method="POST" style="align-items:center;">
           <h2 class="pull-left"></h2>
           <table align="center" cellspacing="5" cellpadding="8" class="table table-bordered table-striped">
@@ -27,13 +25,10 @@
                   <td align="left"><b>Order Date</b></td>
                   <td align="left"><b>Delivery Date</b></td>
                   <td align="left"><b>Suggested Price/Gallon</b></td>
-                  <td align="left"><b>Total Amount</b></td> 
-
-
+                  <td align="left"><b>Total Amount</b></td>
    </form><br><br>
    </div>
   </div>
   <script src="js/scripts.js"></script>
-
 </body>
-</html
+</html>

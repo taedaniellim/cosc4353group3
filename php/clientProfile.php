@@ -1,9 +1,9 @@
 <!doctype html>
-
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>Profile Management</title>
+  <title>Client Profile Management</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="SitePoint">
@@ -18,19 +18,16 @@
 </head>
 
 <body bgcolor={{color}}>
-
   <h1 class="text-center">Profile Management</h1>
   <hr size="3">
   <div class="container">
       <div class="w-75 mx-auto">
-
         <form class="form-group centered" action="register" method="POST" style="align-items:center;">
           <input class="form-control" type="text" name="Full Name" id="Full Name" maxlength = "50" placeholder="Full Name" required></input><br><br>
           <input class="form-control" type="text" name="address" id="address" maxlength = "100" placeholder="Address 1" required></input><br><br>
           <input class="form-control" type="text" name="address" id="address" maxlength = "100" placeholder="Address 2" optional></input><br><br>
           <select name="state" class="form-control" id="state" required>
             <option value="0" label="Select a state ... " selected="selected">Select a state ... </option>
-           
             <option value="AL">AL</option>
             <option value="AK">AK</option>
             <option value="AZ">AZ</option>
@@ -81,7 +78,8 @@
             <option value="WV">WV</option>
             <option value="WI">WI</option>
             <option value="WY">WY</option>
-          </select><br><br>
+          </select>
+          <br><br>
           <input class="form-control" type="text" name="city" id="city" maxlength = "100" placeholder="City" required></input><br><br>
           <input class="form-control" type="text" name="zipcode" id="zipcode" minlength = "5" maxlength = "9" placeholder="Zipcode" required></input><br><br>
           <input class="form-control centered mx-auto" type="submit" name="submit" id="submit" value="COMPLETE"></input><br>
@@ -89,7 +87,5 @@
    </div>
   </div>
   <script src="js/scripts.js"></script>
-
 </body>
 </html
- 

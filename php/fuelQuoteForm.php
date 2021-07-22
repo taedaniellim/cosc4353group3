@@ -1,6 +1,6 @@
 <!doctype html>
-
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Fuel Quote Form</title>
@@ -14,12 +14,10 @@
 </head>
 
 <body bgcolor={{color}}>
-
   <h1 class="text-center">Fuel Quote Form</h1>
   <hr size="3">
   <div class="container">
       <div class="w-75 mx-auto">
-
    <form class="form-group centered" action="register" method="POST" style="align-items:center;">
         <input class="form-control" type="number" name="gallons" id="gallons" placeholder="Gallons Requested" required></input><br><br>
         <input class="form-control" type="text" name="Address" id="Address" placeholder="Non-editable Delivery Address" readonly></input><br><br>
@@ -27,13 +25,9 @@
         <input class="form-control" type="numeric" name="text" id="gallons" placeholder="Non-Editable Suggested Price" readonly></input><br><br>
         <input class="form-control" type="numeric" name="text" id="amount" placeholder="Non-Editable Total Amount Due" readonly></input><br><br>
         <input class="form-control centered mx-auto" type="submit" name="submit" id="submit" value="SUBMIT"></input><br>
-
-
    </form><br><br>
    </div>
   </div>
   <script src="js/scripts.js"></script>
-
 </body>
 </html
- 
