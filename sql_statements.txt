@@ -38,4 +38,4 @@ CREATE TABLE Client (
 	zipcode int(5) NOT NULL,
 	Primary KEY (username),
 	FOREIGN KEY (id) REFERENCES UserCredentials(id)
-);
+); 
