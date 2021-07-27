@@ -55,7 +55,6 @@ if(!(isset($_SESSION['userlogin']))){
       <div class="w-75 mx-auto">
 
         <form class="form-group centered" action="register" method="POST" style="align-items:center;">
-          <input class="form-control" type="text" name="username" id="username" maxlength = "50" placeholder="Please re-enter your username" required></input><br><br>
           <input class="form-control" type="text" name="fullname" id="fullname" maxlength = "50" placeholder="Full Name" required></input><br><br>
           <input class="form-control" type="text" name="address_1" id="address_1" maxlength = "100" placeholder="Address 1" required></input><br><br>
           <input class="form-control" type="text" name="address_2" id="address_2" maxlength = "100" placeholder="Address 2" optional></input><br><br>
