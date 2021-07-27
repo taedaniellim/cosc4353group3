@@ -15,14 +15,14 @@ require_once('config.php');
     <?php
     if(isset($_POST['submit'])){
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $password = sha1($_POST['password']);
 
         $sql = "INSERT INTO UserCredentials (username, password ) VALUES(?,?)";
         $stmtinsert = $db->prepare($sql);
         $result = $stmtinsert->execute([$username, $password]);
-
+        # check if successfully created user
         if($result) {
-            echo 'Success';
+            echo 'Successfully Registered! Please try logging in now!';
         }
         else {
             echo 'Error';
@@ -38,10 +38,10 @@ require_once('config.php');
     <div class="container">
     <div class="w-75 mx-auto">
     <form class="form-group centered" action="register" method="POST" style="align-items:center;">
-        <input class="form-control" type="text" name="username" id="username" placeholder="username" required></input><br><br>
+        <input class="form-control" type="text" name="username" id="username" placeholder="Username" required></input><br><br>
         <input class="form-control" type="password" name="password" id="password" placeholder="Enter Password" required></input><br><br>
         <input class="form-control centered mx-auto" type="submit" name="submit" id="submit" value="REGISTER"></input><br>
-        <span>Already have an Account? <a href="loginForm.php"> LOGIN HERE </a></span>
+        <span> After creating an account, login here! <a href="loginForm.php"> LOGIN HERE </a></span>
     </form><br><br>
     </div>
     </div>
