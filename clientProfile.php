@@ -20,7 +20,7 @@ require_once('config.php');
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
-<body bgcolor={{color}}>
+<body>
     <div>
         <?php
         if(isset($_POST['submit'])){
@@ -32,12 +32,12 @@ require_once('config.php');
             $city = $_POST['city'];
             $zipcode = $_POST['zipcode'];
 
-            $sql = "INSERT INTO ClientProfile (username, fullname, address_1, address_2, state, city, zipcode) VALUES(?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO ClientInformation (username, fullname, address_1, address_2, state, city, zipcode) VALUES(?,?,?,?,?,?,?)";
             $stmtinsert = $db->prepare($sql);
             $result = $stmtinsert->execute([$username, $fullname, $address_1, $address_2, $state, $city, $zipcode]);
-            # check if successfully created user
+            # check if successfully inserted
             if($result) {
-                echo 'Successfully Registered! Please try logging in now!';
+                echo 'Successfully Imported!';
             }
             else {
                 echo 'Error';

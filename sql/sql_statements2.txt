@@ -8,7 +8,7 @@ CREATE TABLE UserCredentials (
 	password varchar(255) NOT NULL
 );
 
-CREATE TABLE ClientProfile ( 
+CREATE TABLE ClientInformation ( 
 	username varchar(100) NOT NULL,
 	fullname varchar(50) NOT NULL,
 	address_1 varchar(100) NOT NULL,
@@ -20,10 +20,17 @@ CREATE TABLE ClientProfile (
 	FOREIGN KEY (username) REFERENCES UserCredentials(username)
 ); 
 
+CREATE TABLE FuelOrder (
+	orderID int (5) NOT NULL AUTO_INCREMENT,
+	username varchar(100),
+	Primary KEY (orderID),
+	FOREIGN KEY (username) REFERENCES ClientInformation (username)
+);
+
 CREATE TABLE FuelQuote (
-	gallons int(5) NOT NULL,
-	Delivery_Address varchar(100) NOT NULL,
-	Delivery_Date date NOT NULL,
+	gallons int(100) NOT NULL,
+	deliveryAdd varchar(100) NOT NULL,
+	deliveryDate date NOT NULL,
 	Price double NOT NULL,
 	Total double NOT NULL,
 	orderID int NOT NULL,

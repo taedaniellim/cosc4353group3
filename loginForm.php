@@ -1,6 +1,6 @@
 <?php
-require_once('config.php');
 session_start();
+require_once('config.php');
 
 $username = $_POST['username'];
 $password = sha1($_POST['password']);
