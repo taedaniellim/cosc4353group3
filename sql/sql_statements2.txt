@@ -9,17 +9,12 @@ CREATE TABLE UserCredentials (
 );
 
 CREATE TABLE Client ( 
-	username varchar(100) NOT NULL,
-	id int(5) NOT NULL AUTO_INCREMENT,
-	firstName varchar(50) NOT NULL,
-	lastName varchar(50) NOT NULL,
-	email varchar(100) NOT NULL,
+	fullName varchar(50) NOT NULL,
 	address_1 varchar(100) NOT NULL,
 	address_2 varchar(100),
+	city varchar(100) NOT NULL,
 	state varchar(2) NOT NULL,
-	city varchar(50) NOT NULL,
 	zipcode int(5) NOT NULL,
-	Primary KEY (username),
 	FOREIGN KEY (id) REFERENCES UserCredentials(id)
 ); 
 
