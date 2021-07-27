@@ -1,28 +1,11 @@
 CREATE DATABASE users; 
 
-USE fuel;
+USE users;
 
 CREATE TABLE UserCredentials (
 	password varchar(255) NOT NULL,
-	id int(5) NOT NULL AUTO_INCREMENT,
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE FuelOrder (
-	orderID int (5) NOT NULL AUTO_INCREMENT,
-	username varchar(100),
-	Primary KEY (orderID),
-	FOREIGN KEY (username) REFERENCES client (username)
-);
-
-CREATE TABLE FuelQuote (
-	gallons int(5) NOT NULL,
-	Delivery_Address varchar(100) NOT NULL,
-	Delivery_Date date NOT NULL,
-	Price double NOT NULL,
-	Total double NOT NULL,
-	orderID int NOT NULL,
-	FOREIGN KEY (orderID) REFERENCES FuelOrder(orderID)
+	username varchar(100) NOT NULL,
+	Primary KEY (username)
 );
 
 CREATE TABLE Client ( 
@@ -39,3 +22,13 @@ CREATE TABLE Client (
 	Primary KEY (username),
 	FOREIGN KEY (id) REFERENCES UserCredentials(id)
 ); 
+
+CREATE TABLE FuelQuote (
+	gallons int(5) NOT NULL,
+	Delivery_Address varchar(100) NOT NULL,
+	Delivery_Date date NOT NULL,
+	Price double NOT NULL,
+	Total double NOT NULL,
+	orderID int NOT NULL,
+	FOREIGN KEY (orderID) REFERENCES FuelOrder(orderID)
+);

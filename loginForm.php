@@ -29,8 +29,8 @@ if (isset($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password
   <title>LOGIN</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-  <link rel="stylesheet" href="../css/loginForm.css">
+  <link rel="stylesheet" href="css1/styles.css?v=1.0">
+  <link rel="stylesheet" href="../css1/loginForm.css">
 </head>
 
 <body>
@@ -43,7 +43,7 @@ if (isset($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password
         <input type="password" name="password" id="password" placeholder="Enter Password" required></input><br><br>
 
         <input type="submit" class = "btn btn-primary" name="login" id="login" value="login"></input><br><br>
-        <span>New Here?<br>Get yourself registered <a href="profileCompletion.html">Here</a></span>
+        <span>New Here?<br>Get yourself registered <a href="../php/clientRegistration.php">Here</a></span>
 
    </form><br><br>
    
