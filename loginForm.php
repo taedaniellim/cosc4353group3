@@ -1,35 +1,25 @@
 <?php
+session_start();
 require_once('config.php');
-?>
 
-<?php 
 
-$host="localhost";
-$user="danyullim";
-$password="john1135";
-$db="users";
+$username = $_POST['username'];
+$password = sha1($_POST['password']);
 
-$con = mysqli_connect($host,$user,$password);
-mysqli_select_db($con, $db);
+$sql = "SELECT * FROM UserCredentials WHERE username = ? AND password = ? LIMIT 1";
+$stmtselect  = $db->prepare($sql);
+$result = $stmtselect->execute([$username, $password]);
 
-if(isset($_POST['username'])){
-    
-    $username=$_POST['username'];
-    $password=$_POST['password'];
-    
-    $sql="select * from UserCredentials where user='".$username."'AND Pass='".$password."' limit 1";
-    
-    $result=mysqli_query($con,$sql);
-    
-    if(mysqli_num_rows($result)==1){
-        echo " You Have Successfully Logged in";
-        exit();
-    }
-    else{
-        echo " You Have Entered Incorrect Password";
-        exit();
-    }
-        
+if($result){
+	$user = $stmtselect->fetch(PDO::FETCH_ASSOC);
+	if($stmtselect->rowCount() > 0){
+		$_SESSION['userlogin'] = $user;
+		header('Location: clientProfile.php');
+	}else{
+		echo 'Invalid Username or Password, please try again!';		
+	}
+}else{
+	echo 'There were errors while connecting to database.';
 }
 ?>
 
@@ -41,8 +31,8 @@ if(isset($_POST['username'])){
    <title> Login </title>
    <meta name="description" content="The HTML5 Herald">
    <meta name="author" content="SitePoint">
-   <link rel="stylesheet" href="css1/styles.css?v=1.0">
-   <link rel="stylesheet" href="../css1/loginForm.css">
+   <link rel="stylesheet" href="css/styles.css?v=1.0">
+   <link rel="stylesheet" href="../css/loginForm.css">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
