@@ -1,3 +1,38 @@
+<?php
+require_once('config.php');
+?>
+
+<?php 
+
+$host="localhost";
+$user="danyullim";
+$password="john1135";
+$db="users";
+
+$con = mysqli_connect($host,$user,$password);
+mysqli_select_db($con, $db);
+
+if(isset($_POST['username'])){
+    
+    $username=$_POST['username'];
+    $password=$_POST['password'];
+    
+    $sql="select * from UserCredentials where user='".$username."'AND Pass='".$password."' limit 1";
+    
+    $result=mysqli_query($con,$sql);
+    
+    if(mysqli_num_rows($result)==1){
+        echo " You Have Successfully Logged in";
+        exit();
+    }
+    else{
+        echo " You Have Entered Incorrect Password";
+        exit();
+    }
+        
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -12,10 +47,8 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 
-</head>
-
 <body>
-    <form action="loginForm.php" method="post">
+    <form action="loginForm.php" onsubmit = "return validation()" method="post">
     <h1 class="text-center"> Client Login </h1>
     <hr size="3">
     <div class="container">
