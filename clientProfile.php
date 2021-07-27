@@ -1,25 +1,8 @@
 <?php
 require_once('config.php');
-if(isset($_POST['submit'])){
-    $username = $_POST['username'];
-    $password = sha1($_POST['password']);
-
-    $sql = "INSERT INTO UserCredentials (username, password ) VALUES(?,?)";
-    $stmtinsert = $db->prepare($sql);
-    $result = $stmtinsert->execute([$username, $password]);
-    # check if successfully created user
-    if($result) {
-        echo 'Successfully Registered! Please try logging in now!';
-    }
-    else {
-        echo 'Error';
-    }
-}
 ?>
 
-
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -38,17 +21,41 @@ if(isset($_POST['submit'])){
 </head>
 
 <body bgcolor={{color}}>
+    <div>
+        <?php
+        if(isset($_POST['submit'])){
+            $username = $_POST['username'];
+            $fullname = $_POST['fullname'];
+            $address_1 = $_POST['address_1'];
+            $address_2 = $_POST['address_2'];
+            $state = $_POST['state'];
+            $city = $_POST['city'];
+            $zipcode = $_POST['zipcode'];
 
+            $sql = "INSERT INTO ClientProfile (username, fullname, address_1, address_2, state, city, zipcode) VALUES(?,?,?,?,?,?,?)";
+            $stmtinsert = $db->prepare($sql);
+            $result = $stmtinsert->execute([$username, $fullname, $address_1, $address_2, $state, $city, $zipcode]);
+            # check if successfully created user
+            if($result) {
+                echo 'Successfully Registered! Please try logging in now!';
+            }
+            else {
+                echo 'Error';
+            }
+        }
+        ?>
+    </div>
   <h1 class="text-center"> Client Profile Management </h1>
   <hr size="3">
   <div class="container">
       <div class="w-75 mx-auto">
 
         <form class="form-group centered" action="register" method="POST" style="align-items:center;">
-          <input class="form-control" type="text" name="Full Name" id="Full Name" maxlength = "50" placeholder="Full Name" required></input><br><br>
-          <input class="form-control" type="text" name="address" id="address" maxlength = "100" placeholder="Address 1" required></input><br><br>
-          <input class="form-control" type="text" name="address" id="address" maxlength = "100" placeholder="Address 2" optional></input><br><br>
-          <select name="state" class="form-control" id="state" required>
+          <input class="form-control" type="text" name="username" id="username" maxlength = "50" placeholder="Please re-enter your username" required></input><br><br>
+          <input class="form-control" type="text" name="fullname" id="fullname" maxlength = "50" placeholder="Full Name" required></input><br><br>
+          <input class="form-control" type="text" name="address_1" id="address_1" maxlength = "100" placeholder="Address 1" required></input><br><br>
+          <input class="form-control" type="text" name="address_2" id="address_2" maxlength = "100" placeholder="Address 2" optional></input><br><br>
+          <select name="states" class="form-control" id="states" required>
             <option value="0" label="Select a state ... " selected="selected">Select a state ... </option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
@@ -102,7 +109,7 @@ if(isset($_POST['submit'])){
             <option value="WY">WY</option>
           </select><br><br>
           <input class="form-control" type="text" name="city" id="city" maxlength = "100" placeholder="City" required></input><br><br>
-          <input class="form-control" type="number" name="zipcode" id="zipcode" minlength = "5" maxlength = "9" placeholder="Zipcode" required></input><br><br>
+          <input class="form-control" type="text" name="zipcode" id="zipcode" minlength = "5" maxlength = "9" placeholder="Zipcode" required></input><br><br>
           <input class="form-control centered mx-auto" type="submit" name="submit" id="submit" value="COMPLETE"></input><br>
    </form><br><br>
    </div>

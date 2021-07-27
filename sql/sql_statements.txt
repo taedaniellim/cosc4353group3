@@ -15,7 +15,7 @@ CREATE TABLE FuelOrder (
 	FOREIGN KEY (username) REFERENCES client (username)
 );
 
-
+g
  
 CREATE TABLE Client ( 
 	username varchar(100) NOT NULL,
