@@ -35,4 +35,4 @@ CREATE TABLE FuelQuote (
 	Total double NOT NULL,
 	orderID int NOT NULL,
 	FOREIGN KEY (orderID) REFERENCES FuelOrder(orderID)
-);
+); 
