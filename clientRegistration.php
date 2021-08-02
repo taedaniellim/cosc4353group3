@@ -48,4 +48,4 @@ require_once('config.php');
     <script src="js/scripts.js"></script>
     </form>
 </body> 
-</html>
+</html> 
