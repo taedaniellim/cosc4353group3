@@ -13,9 +13,9 @@ CREATE TABLE ClientInformation (
 	fullname varchar(50) NOT NULL,
 	address_1 varchar(100) NOT NULL,
 	address_2 varchar(100),
-	state varchar(2) NOT NULL,
+	states varchar(2) NOT NULL,
 	city varchar(100) NOT NULL,
-	zipcode int(5) NOT NULL,
+	zipcode int(9),
 	Primary KEY (username),	
 	FOREIGN KEY (username) REFERENCES UserCredentials(username)
 ); 
