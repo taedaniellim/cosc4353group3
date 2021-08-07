@@ -12,7 +12,7 @@ $result = $stmtselect->execute([$username, $password]);
 if($result){
 	$user = $stmtselect->fetch(PDO::FETCH_ASSOC);
 	if($stmtselect->rowCount() > 0){
-		$_SESSION['userlogin'] = $user;
+		$_SESSION['username'] = $user;
 		header('Location: clientProfile.php');
 	}else{
         echo 'Invalid Username or Password, please try again!';		
