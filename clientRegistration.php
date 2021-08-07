@@ -25,7 +25,7 @@ require_once('config.php');
             echo 'Successfully Registered! Please try logging in now!';
         }
         else {
-            echo 'Error';
+            echo 'Error, please try signing-up again!';
         }
     }
     ?>

@@ -1,9 +1,6 @@
 <?php
 require_once('config.php');
 session_start();
-if(!(isset($_SESSION['userlogin']))){
-  header("Location: loginForm.php");
-}
 ?>
 
 <!doctype html>
@@ -32,14 +29,14 @@ if(!(isset($_SESSION['userlogin']))){
             $fullname = $_POST['fullname'];
             $address_1 = $_POST['address_1'];
             $address_2 = $_POST['address_2'];
-            $state = $_POST['state'];
+            $states = $_POST['states'];
             $city = $_POST['city'];
             $zipcode = $_POST['zipcode'];
 
-            $sql = "INSERT INTO ClientInformation (username, fullname, address_1, address_2, state, city, zipcode) VALUES(?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO ClientInformation (username, fullname, address_1, address_2, states, city, zipcode) VALUES($username, $fullname,$address_1,$address_2, $states, $city, $zipcode)";
             $stmtinsert = $db->prepare($sql);
-            $result = $stmtinsert->execute([$username, $fullname, $address_1, $address_2, $state, $city, $zipcode]);
-            # check if successfully inserted
+            $result = $stmtinsert->execute([$username, $fullname, $address_1, $address_2, $states, $city, $zipcode]);
+            # check if successfully inserted 
             if($result) {
                 echo 'Successfully Imported!';
             }
@@ -53,9 +50,9 @@ if(!(isset($_SESSION['userlogin']))){
   <hr size="3">
   <div class="container">
       <div class="w-75 mx-auto">
-
         <form class="form-group centered" action="register" method="POST" style="align-items:center;">
-          <input class="form-control" type="text" name="fullname" id="fullname" maxlength = "50" placeholder="Full Name" required></input><br><br>
+          <input class="form-control" type="tex
+          t" name="fullname" id="fullname" maxlength = "50" placeholder="Full Name" required></input><br><br>
           <input class="form-control" type="text" name="address_1" id="address_1" maxlength = "100" placeholder="Address 1" required></input><br><br>
           <input class="form-control" type="text" name="address_2" id="address_2" maxlength = "100" placeholder="Address 2" optional></input><br><br>
           <select name="states" class="form-control" id="states" required>

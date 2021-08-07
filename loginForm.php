@@ -15,7 +15,7 @@ if($result){
 		$_SESSION['userlogin'] = $user;
 		header('Location: clientProfile.php');
 	}else{
-		echo 'Invalid Username or Password, please try again!';		
+        echo 'Invalid Username or Password, please try again!';		
 	}
 }else{
 	echo 'There were errors while connecting to database.';
