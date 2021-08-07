@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!(isset($_SESSION['user']))){
+  header("Location: loginForm.php");
+}
+
 require_once('config.php');
 ?>
 
@@ -17,6 +22,42 @@ require_once('config.php');
   <link rel="stylesheet" href="../css/fuelQuoteHistory.css">
 </head>
 <body bgcolor={{color}}>
+
+ <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+
+                
+                <li class="nav-item">
+                <a class="nav-link active" href="fuelQuoteHistory.php">Quote History</a>
+                </li>
+                
+                <li class="nav-item">
+                <a class="nav-link active" href="edit.php">Edit profile</a>
+                </li>
+                
+                 <li class="nav-item">
+                <a class="nav-link active" href="fuelQuoteForm.php">Fuel quote form</a>
+                </li>
+                
+                
+                
+                 <li class="nav-item">
+                <a class="nav-link active" href="logout.php">Logout</a>
+                </li>
+
+
+            </ul>
+            </div>
+        </div>
+        </nav>
+	</div>
   <h1 class="text-center">Fuel Quote History </h1>
   <hr size="3">
   <div class="container">

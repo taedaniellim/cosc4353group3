@@ -2,12 +2,12 @@
 
 session_start();
 
-if(isset($_SESSION['email']))
+if(isset($_SESSION['user']))
 {
-	unset($_SESSION['email']);
+	unset($_SESSION['user']);
 
 }
 
-header("Location: login.php");
+header("Location: loginForm.php");
 die;
 ?>

@@ -1,16 +1,21 @@
 <?php
-require_once('config.php');
 session_start();
-if(!(isset($_SESSION['userlogin']))){
+if(!(isset($_SESSION['user']))){
   header("Location: loginForm.php");
 }
+
+?>
+
+
+<?php
+require_once('config.php');
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Client Profile Management</title>
+  <title>Client Profile Completion</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="SitePoint">
@@ -27,21 +32,37 @@ if(!(isset($_SESSION['userlogin']))){
 <body>
     <div>
         <?php
+        $user = $_SESSION['user'];
+        
+
         if(isset($_POST['submit'])){
             $username = $_POST['username'];
-            $fullname = $_POST['fullname'];
+            $firstname = $_POST['firstName'];
+            $lastname = $_POST['lastName'];
             $address_1 = $_POST['address_1'];
             $address_2 = $_POST['address_2'];
-            $states = $_POST['states'];
+            $state = $_POST['state'];
             $city = $_POST['city'];
             $zipcode = $_POST['zipcode'];
 
-            $sql = "INSERT INTO ClientInformation (username, fullname, address_1, address_2, states, city, zipcode) VALUES($username, $fullname,$address_1,$address_2, $states, $city, $zipcode)";
+            $sql = "UPDATE client 
+            SET 
+              firstName = ?, 
+              lastName = ?,
+              address_1 = ?,
+              address_2 = ?, 
+              state = ?,
+              city = ?, 
+              zipcode = ?
+            WHERE
+              username = ?";
+
             $stmtinsert = $db->prepare($sql);
-            $result = $stmtinsert->execute([$username, $fullname, $address_1, $address_2, $states, $city, $zipcode]);
-            # check if successfully inserted 
+            $result = $stmtinsert->execute([$firstname, $lastname, $address_1, $address_2, $state, $city, $zipcode, $username]);
+            # check if successfully inserted
             if($result) {
                 echo 'Successfully Imported!';
+                header("Location: pricing.php");
             }
             else {
                 echo 'Error';
@@ -49,16 +70,18 @@ if(!(isset($_SESSION['userlogin']))){
         }
         ?>
     </div>
-  <h1 class="text-center"> Client Profile Management </h1>
+  <h1 class="text-center"> Client Profile Completion </h1>
   <hr size="3">
   <div class="container">
       <div class="w-75 mx-auto">
-        <form class="form-group centered" action="register" method="POST" style="align-items:center;">
-          <input class="form-control" type="tex
-          t" name="fullname" id="fullname" maxlength = "50" placeholder="Full Name" required></input><br><br>
+
+        <form class="form-group centered" method="POST" style="align-items:center;">
+          <input class="form-control" type="text" name="username" id="username" maxlength = "50" placeholder="re-enter username" required></input><br><br>
+          <input class="form-control" type="text" name="firstName" id="firstName" maxlength = "50" placeholder="First Name" required></input><br><br>
+          <input class="form-control" type="text" name="lastName" id="lastName" maxlength = "50" placeholder="Last Name" required></input><br><br>
           <input class="form-control" type="text" name="address_1" id="address_1" maxlength = "100" placeholder="Address 1" required></input><br><br>
           <input class="form-control" type="text" name="address_2" id="address_2" maxlength = "100" placeholder="Address 2" optional></input><br><br>
-          <select name="states" class="form-control" id="states" required>
+          <select name="state" class="form-control" id="state" required>
             <option value="0" label="Select a state ... " selected="selected">Select a state ... </option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
